@@ -1,45 +1,45 @@
-#include <iostream>
-#include <vector>
+#include <stdio.h>
+#include <stdbool.h>
 
-using namespace std;
-
-// Função auxiliar para imprimir o vetor solução
-void imprime_solucao(const vector<int>& s) {
-    cout << "{ ";
-    for (int i = 0; i < s.size(); i++) {
-        cout << s[i];
-        if (i < s.size() - 1) cout << ", ";
+void imprime_solucao(int s[], int tamanho) {
+    printf("{ ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d", s[i]);
+        if (i < tamanho - 1) {
+            printf(", ");
+        }
     }
-    cout << " }\n";
+    printf(" }\n");
 }
 
-// Algoritmo de backtracking para gerar permutações (sem repetição)
-void mostra_permutacoes(vector<int>& s, int i, const vector<int>& v, int n, vector<bool>& usados) {
+void mostra_permutacoes(int s[], int i, int v[], int n, bool usados[]) {
     if (i == n) {
-        imprime_solucao(s);
+        imprime_solucao(s, n);
     } else {
         for (int j = 0; j < n; j++) {
-            // Só utiliza o elemento se ele ainda não estiver na solução atual
             if (!usados[j]) {
                 s[i] = v[j];
-                usados[j] = true; // Marca como usado
+                usados[j] = true; 
                 
                 mostra_permutacoes(s, i + 1, v, n, usados);
                 
-                usados[j] = false; // Backtracking: desmarca para a próxima iteração
+                usados[j] = false; 
             }
         }
     }
 }
 
 int main() {
-    cout << "=== Permutacoes (v tamanho 3) ===\n";
+    printf("=== Permutacoes (v tamanho 3) ===\n");
     
-    vector<int> v = {1, 2, 3};     // Vetor de entrada
-    vector<int> s(3);              // Vetor solução
-    vector<bool> usados(3, false); // Vetor para controle de elementos já utilizados
+    int v[3] = {1, 2, 3}; 
+    int s[3];             
     
-    mostra_permutacoes(s, 0, v, 3, usados);
+    bool usados[3] = {false, false, false}; 
+    
+    int n = 3; 
+    
+    mostra_permutacoes(s, 0, v, n, usados);
     
     return 0;
 }

@@ -1,22 +1,19 @@
-#include <iostream>
-#include <vector>
+#include <stdio.h>
 
-using namespace std;
-
-// Função auxiliar para imprimir o vetor solução
-void imprime_solucao(const vector<int>& s) {
-    cout << "{ ";
-    for (int i = 0; i < s.size(); i++) {
-        cout << s[i];
-        if (i < s.size() - 1) cout << ", ";
+void imprime_solucao(int s[], int tamanho) {
+    printf("{ ");
+    for (int i = 0; i < tamanho; i++) {
+        printf("%d", s[i]);
+        if (i < tamanho - 1) {
+            printf(", ");
+        }
     }
-    cout << " }\n";
+    printf(" }\n");
 }
 
-// Algoritmo de backtracking para gerar sequências com repetição
-void mostra_sequencias(vector<int>& s, int i, const vector<int>& v, int m, int n) {
+void mostra_sequencias(int s[], int i, int v[], int m, int n) {
     if (i == m) { 
-        imprime_solucao(s);
+        imprime_solucao(s, m);
     } else {
         for (int j = 0; j < n; j++) {
             s[i] = v[j];
@@ -26,12 +23,15 @@ void mostra_sequencias(vector<int>& s, int i, const vector<int>& v, int m, int n
 }
 
 int main() {
-    cout << "=== Sequencias (v tamanho 3, s tamanho 3) ===\n";
+    printf("=== Sequencias (v tamanho 3, s tamanho 3) ===\n");
     
-    vector<int> v = {1, 2, 3}; // Vetor de entrada
-    vector<int> s(3);          // Vetor solução de tamanho 3
+    int v[3] = {1, 2, 3}; 
+    int s[3];             
     
-    mostra_sequencias(s, 0, v, 3, 3);
+    int m = 3; 
+    int n = 3; 
+    
+    mostra_sequencias(s, 0, v, m, n);
     
     return 0;
 }
