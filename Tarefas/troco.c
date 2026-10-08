@@ -1,17 +1,18 @@
 #include <stdio.h>
 
-int main(int argc, char const *argv[])
-{
+int troco (int C[], int tamanho_C, int valor, int S[]);
+void print_vetor (int V[], int tamanho_V);
 
-//ordenar conjunto C
+int main(){
+    int C[] = {5,2,1}; //conjunto C(Valores das Moedas) ordenado de forma decrescente
+    int valor = 12; //int valor = valor do troco 
+    int S[50]; //vetor S = solucao
+    int tamanho_C = sizeof(C)/sizeof(C[0]);
 
+    int tamanho_S = troco(C, tamanho_C, valor, S);
+    print_vetor(S, tamanho_S);
 
-
-
-//conjunto C = valores das moedas
-//int valor = valor do troco
-//vetor S = solucao
-
+    printf("Tamanho do vetor solucao: %i\n", tamanho_S);
 }
 
 int troco (int C[], int tamanho_C, int valor, int S[]){
@@ -19,8 +20,8 @@ int troco (int C[], int tamanho_C, int valor, int S[]){
     int soma = 0; //soma para diminuir o valor
     int indice_C = 0;
 
-    while (indice_C > tamanho_C && soma < valor){
-        int m = C[indice_C];//pega primeiro valro de C
+    while (indice_C < tamanho_C && soma < valor){
+        int m = C[indice_C];//pega primeiro valor de C
 
         //verifica se troco possivel e guarda ele no vetor solucao
         if (soma + m <= valor){
@@ -38,10 +39,13 @@ int troco (int C[], int tamanho_C, int valor, int S[]){
     if (soma == valor){
         return indice_S;
     }
+    return -1; // Retorna -1 se não for possível dar o troco
 }
 
 void print_vetor (int V[], int tamanho_V){
-    for (int i = 0, i < tamanho_V, i++){
-        printf("%i", V[i]);
+    printf("Vetor Solucao: ");
+    for (int i = 0; i < tamanho_V; i++){
+        printf("%i ", V[i]);
     }
+    printf("\n");
 }
