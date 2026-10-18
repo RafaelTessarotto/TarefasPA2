@@ -6,7 +6,7 @@
 // 2. SUBSEQUÊNCIA CRESCENTE MAIS LONGA (LIS)
 // ==========================================
 
-// 2.1 Versão Recursiva
+// Versão Recursiva
 int lis_recursiva(int num[], int i) {
     if (i == 0) {
         return 1;
@@ -29,7 +29,7 @@ int subsequencia_crescente_mais_longa_rec(int num[], int n) {
     return maior;
 }
 
-// 2.2 Versão Memoization (Top-Down)
+// Versão Memoization (Top-Down)
 int lis_memoization(int num[], int i, int L[]) {
     if (L[i] != -1) {
         return L[i];
@@ -52,7 +52,7 @@ int lis_memoization(int num[], int i, int L[]) {
 int subsequencia_crescente_mais_longa_memo(int num[], int n) {
     int L[n];
     for (int i = 0; i < n; i++) {
-        L[i] = -1; // Inicializando o "caderninho"
+        L[i] = -1; 
     }
     
     int maior = 1;
@@ -63,7 +63,7 @@ int subsequencia_crescente_mais_longa_memo(int num[], int n) {
     return maior;
 }
 
-// 2.3 Versão Tabulation (Bottom-Up)
+// Versão Tabulation (Bottom-Up)
 int subsequencia_crescente_mais_longa_tab(int num[], int n) {
     int L[n];
     int maior = 0;
@@ -89,7 +89,7 @@ int subsequencia_crescente_mais_longa_tab(int num[], int n) {
 // ==========================================
 int main() {
     printf("===== TESTE LIS =====\n");
-    // Vetor usado no exemplo do PDF
+    
     int num_lis[] = {8, 7, 11, 4, 5, 1, 9, 10, 6, 3};
     int n_lis = sizeof(num_lis) / sizeof(num_lis[0]);
     

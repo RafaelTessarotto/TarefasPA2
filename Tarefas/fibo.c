@@ -4,7 +4,7 @@
 // 1. NÚMEROS DE FIBONACCI
 // ==========================================
 
-// 1.1 Versão Recursiva
+// Versão Recursiva
 int fib_recursiva(int n) {
     if (n == 0 || n == 1) {
         return n;
@@ -12,7 +12,7 @@ int fib_recursiva(int n) {
     return fib_recursiva(n - 1) + fib_recursiva(n - 2);
 }
 
-// 1.2 Versão Memoization (Top-Down)
+// Versão Memoization (Top-Down)
 int fib_memoization(int n, int memo[]) {
     if (memo[n] != -1) {
         return memo[n];
@@ -27,7 +27,7 @@ int fib_memoization(int n, int memo[]) {
     return memo[n];
 }
 
-// 1.3 Versão Tabulation (Bottom-Up)
+// Versão Tabulation (Bottom-Up)
 int fib_tabulation(int n) {
     if (n == 0) return 0;
     
